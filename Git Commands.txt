@@ -133,9 +133,8 @@ To undo a commit and unstage all files:
 	git reset HEAD~;
 		In case you want to undo the last commit and unstage all the files.
 
-
-
 or
+
 	git reset --mixed HEAD~;
 		"mixed" will reset the index but not the working tree (i.e., the
 		changed files are preserved but not marked for commit) and reports
@@ -153,20 +152,5 @@ To undo a commit and completely remove all changes:
 Rewrite a commit message:
 
 	git -amend
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
