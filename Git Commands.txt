@@ -20,7 +20,7 @@ To list all branches in your local repository:
 
 To switch to a branch you want to work in:
 
-	git checkout <branch_name>
+	git checkout [NAME OF BRANCH]
 
 To confirm you are working in the branch that you think you are:
 
