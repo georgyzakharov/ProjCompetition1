@@ -1,0 +1,25 @@
+Secure Copy - "scp":
+
+	Simple function that uses SSH (Secure Shell) to copy files between
+	a remote location and a local location. File source can be either
+	remote or local, and file destination can also be either remote or
+	local. However, the destination and the source cannot both be remote
+	simultaneously. See the use cases below for further explanation.
+
+	Use Cases:
+
+		A. Local --> Local
+		B. Local --> Remote
+		C. Remote --> Local
+		D. NO - doesn't work: Remote --/--> Remote
+
+	How to use:
+
+		Pulling a file:
+
+			scp [USER]@[SERVER_IP]:[PATH_TO_FILE] [FULL_DESTINATION_DIRECTORY_PATH]
+
+		Pushing a file:
+
+			scp [PATH_TO_FILE] [USER]@[SERVER_IP]:[FULL_DESTINATION_DIRECTORY_PATH]
+
