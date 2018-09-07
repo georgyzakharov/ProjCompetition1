@@ -153,4 +153,45 @@ Rewrite a commit message:
 
 	git -amend
 
+Push/pull without a password:
+
+	First, generate an SSH key (Linux/macOS only) via the command:
+
+		ssh-keygen -t rsa -b 4096 -C "[YOUR GITHUB EMAIL ADDRESS]"
+			Note: do NOT use a passphrase when this command
+			prompts you for one, simply hit the <ENTER> key
+			BOTH times that you are prompted to provide a
+			passphrase.
+
+	The above command will generate two keys, a public key (".pub" file
+	extension) and a private key. They are stored by default in your
+	"~/.ssh" directory, though this can vary depending on where you
+	generate the keys in your filesystem. If they are not located in
+	your "~/.ssh" directory, look in the directory where you executed 
+	the "ssh-keygen" command for your pair of keys.
+
+	The creator of the repository must go to the repository on GitHub.
+	There will be a "Settings" option located to the far upper right of the
+	repository (it appears a gear wheel). Click on this option.
+
+	You will be directed to an administrative interface for the webpage.
+	On the far left side of the page, look for the phrase "Deploy keys".
+	Click on this option.
+	
+	On the resulting page that appears, click on "Add deploy key". Give a
+	title to the key (use the filename for simplicity, e.g. "id_rsa.pub").
+	Then paste the contents of the public key into the key field.
+
+	Make sure to allow write access to the repository with the SSH key by
+	selecting the "Allow write access" checkbox located beneath the key field.
+	By default, a deployed SSH key for a repository only permits read access
+	(i.e., the key user can only pull, not push to the repository).
+
+	Click "Add key". Note that only keys which are not in use ANYWHERE else on
+	GitHub can be used as deploy keys (i.e., users who have the same SSH keys for
+	their profiles on GitHub cannot also use those keys as a repository deploy
+	key).
+
+	Try pushing. You should no longer need a password to do this.
+
 
