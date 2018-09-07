@@ -8,7 +8,8 @@ public class ProgCompTeam implements Runnable
 {
 	public ProgCompTeam(File Directory) 
 	{
-		
+		this.Directory = Directory;
+		Files = new ArrayList<File>();
 	}
 	
 	public void run() 
@@ -18,4 +19,6 @@ public class ProgCompTeam implements Runnable
 	
 	private File Directory;
 	private ArrayList<File> Files;
+	
+	private String TeamName, Password;
 }
