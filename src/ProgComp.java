@@ -8,7 +8,10 @@ public class ProgComp
 {
 	public static void main(String[] args)
 	{
+		processes = new ArrayList<Process>();
 
 	}
+	
+	protected static ArrayList<Process> processes;
 
 }
