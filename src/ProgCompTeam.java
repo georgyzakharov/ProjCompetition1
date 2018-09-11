@@ -9,6 +9,7 @@ public class ProgCompTeam implements Runnable
 {
 	public ProgCompTeam(File Directory) 
 	{
+		System.out.println("Constructed team");
 		this.Directory = Directory;
 		
 		Files = new ArrayList<File>();
@@ -16,8 +17,10 @@ public class ProgCompTeam implements Runnable
 	
 	public void run() 
 	{
+		System.out.println("Created thread for team");
 		for( File file:Directory.listFiles())
 		{
+			System.out.println("Running thread for " + file.getName());
 			if(!(Files.contains(file)) && file.isFile()) 
 			{	
 				compile(file);
@@ -32,6 +35,7 @@ public class ProgCompTeam implements Runnable
 	{
 		String[] syscommand = new String[2]; 
 		syscommand [1] = file.getAbsolutePath();
+		System.out.println("Compiling "+file.getName());
 		
 		if(file.getName().contains(".c")) 
 		{
@@ -48,6 +52,7 @@ public class ProgCompTeam implements Runnable
 			
 		try 
 		{
+			System.out.println(syscommand);
 			P = Runtime.getRuntime().exec(syscommand);
 			
 			while (P.isAlive()) {}
@@ -60,6 +65,7 @@ public class ProgCompTeam implements Runnable
 	
 	private void exec(File file) 
 	{
+		System.out.println("Trying to execute code for "+file.getName());
 		String syscommand = ""; 		
 		
 		if(file.getName().contains(".c")) 
@@ -78,6 +84,7 @@ public class ProgCompTeam implements Runnable
 		
 		try
 		{
+			System.out.println(syscommand);
 			P = Runtime.getRuntime().exec(syscommand);
 			
 			while(P.isAlive()) 
@@ -88,7 +95,11 @@ public class ProgCompTeam implements Runnable
 				{
 					bob.delay(500);
 					
-					if(!P.isAlive()) {break;}
+					if(!P.isAlive())
+					{
+						System.out.println("Program finished execution before timeout");
+						break;
+					}
 				}
 			}
 			
