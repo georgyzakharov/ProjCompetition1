@@ -52,7 +52,7 @@ public class ProgCompTeam implements Runnable
 			
 		try 
 		{
-			System.out.println(syscommand);
+			System.out.println(syscommand[0]+syscommand[1]);
 			P = Runtime.getRuntime().exec(syscommand);
 			
 			while (P.isAlive()) {}
@@ -75,7 +75,7 @@ public class ProgCompTeam implements Runnable
 		else if(file.getName().contains(".java")) 
 		{
 			syscommand.concat("java ").concat(file.getAbsolutePath());
-			syscommand = syscommand.substring(0, syscommand.indexOf('.'));
+			syscommand = syscommand.substring(0, syscommand.indexOf('.')+1);
 		}
 		else if(file.getName().contains(".py")) 
 		{
