@@ -68,7 +68,7 @@ public class ProgCompTeam implements Runnable
 		}
 		else if(file.getName().contains(".java")) 
 		{
-			syscommand.concat("javax ").concat(file.getAbsolutePath());
+			syscommand.concat("java ").concat(file.getAbsolutePath());
 			syscommand = syscommand.substring(0, syscommand.indexOf('.'));
 		}
 		else if(file.getName().contains(".py")) 
