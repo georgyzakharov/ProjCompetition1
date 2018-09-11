@@ -14,7 +14,7 @@ public class ProgComp
 		ProgCompTeam test = new ProgCompTeam(new File("/home/students/test"));
 		
 		threads.add(new Thread(test));
-		threads.get(1).start();
+		threads.get(0).start();;
 
 	}
 	
