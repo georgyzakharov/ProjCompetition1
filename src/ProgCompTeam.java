@@ -1,9 +1,9 @@
 import java.io.File;
 import java.io.IOException;
-import java.lang.Thread;
 import java.lang.Process;
 import java.lang.Runtime;
 import java.util.ArrayList;
+import java.awt.Robot;
 
 public class ProgCompTeam implements Runnable
 {
@@ -22,6 +22,7 @@ public class ProgCompTeam implements Runnable
 			{	
 				compile(file);
 				exec(file);
+				grade(file);
 				Files.add(file);
 			}
 		}
@@ -47,12 +48,13 @@ public class ProgCompTeam implements Runnable
 			
 		try 
 		{
-			//Process P = Runtime.getRuntime().exec(syscommand);
-			ProgComp.processes.add(Runtime.getRuntime().exec(syscommand));
-		}
-		catch(IOException e) 
-		{
+			P = Runtime.getRuntime().exec(syscommand);
 			
+			while (P.isAlive()) {}
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
 		}
 	}
 	
@@ -67,6 +69,7 @@ public class ProgCompTeam implements Runnable
 		else if(file.getName().contains(".java")) 
 		{
 			syscommand.concat("javax ").concat(file.getAbsolutePath());
+			syscommand = syscommand.substring(0, syscommand.indexOf('.'));
 		}
 		else if(file.getName().contains(".py")) 
 		{
@@ -75,18 +78,51 @@ public class ProgCompTeam implements Runnable
 		
 		try
 		{
-			//Process p = Runtime.getRuntime().exec(syscommand);
-			ProgComp.processes.add(Runtime.getRuntime().exec(syscommand));
+			P = Runtime.getRuntime().exec(syscommand);
+			
+			while(P.isAlive()) 
+			{
+				int seconds=10;
+				
+				for(seconds=seconds*2 ; seconds > 0 ;seconds--)
+				{
+					bob.delay(500);
+					
+					if(!P.isAlive()) {break;}
+				}
+			}
+			
+			Submissions.add(new ProgCompSubmission(file,P.getInputStream()));
+			
+			
+			if(P.isAlive()) {P.destroyForcibly();}
 		} 
 		catch (IOException e)
 		{
-			
+			e.printStackTrace();
 		}
 		
 	}
 	
+	private void grade(File file) 
+	{
+		for(ProgCompSubmission sub : Submissions) 
+		{
+			if (file.equals(sub.file))
+			{
+				//Push the output to grading software
+			   //using output stream and system call
+				System.out.print(sub.data);
+			}
+		}
+	}
+	
+	private Process P;
+	
+	
 	private File Directory;
 	private ArrayList<File> Files;
-	
-	private String TeamName, Password;
+	private ArrayList<ProgCompSubmission> Submissions;
+	private Robot bob;
+	//private String TeamName, Password;
 }
