@@ -75,7 +75,7 @@ public class ProgCompTeam implements Runnable
 		else if(file.getName().contains(".java")) 
 		{
 			System.out.println(syscommand);
-			syscommand = syscommand + "java " + file.getAbsolutePath();
+			syscommand = syscommand + "java -cp "+Directory.getAbsolutePath() + " " + file.getName();
 			System.out.println(syscommand);
 			syscommand = syscommand.substring(0, syscommand.indexOf('.'));
 			System.out.println(syscommand);
