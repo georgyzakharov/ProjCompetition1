@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.lang.Process;
 import java.lang.Runtime;
 import java.util.ArrayList;
+import java.awt.AWTException;
 import java.awt.Robot;
 
 public class ProgCompTeam implements Runnable
@@ -10,6 +11,7 @@ public class ProgCompTeam implements Runnable
 	public ProgCompTeam(File Directory) 
 	{
 		System.out.println("Constructed team");
+		
 		this.Directory = Directory;
 		
 		Files = new ArrayList<File>();
@@ -17,6 +19,15 @@ public class ProgCompTeam implements Runnable
 	
 	public void run() 
 	{
+		try 
+		{
+			bob = new Robot();
+		}
+		catch (AWTException e)
+		{
+			e.printStackTrace();
+		}
+		
 		System.out.println("Created thread for team");
 		for( File file:Directory.listFiles())
 		{
