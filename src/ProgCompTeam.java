@@ -3,8 +3,6 @@ import java.io.IOException;
 import java.lang.Process;
 import java.lang.Runtime;
 import java.util.ArrayList;
-import java.awt.AWTException;
-import java.awt.Robot;
 
 public class ProgCompTeam implements Runnable
 {
@@ -42,8 +40,8 @@ public class ProgCompTeam implements Runnable
 		
 		if(file.getName().contains(".c")) 
 		{
-			syscommand[0] = "clang";
-			syscommand[1].concat(" -o " + file.getName().substring(0, file.getName().indexOf('.')));
+			syscommand[0] = "clang -o ";
+			syscommand[1].concat(" " + file.getName().substring(0, file.getName().indexOf('.')));
 		}
 		else if(file.getName().contains(".java")) 
 		{
@@ -74,7 +72,7 @@ public class ProgCompTeam implements Runnable
 		
 		if(file.getName().contains(".c")) 
 		{
-			syscommand = syscommand + "./";
+			syscommand = syscommand + ".";
 			syscommand.concat(file.getAbsolutePath().substring(0, file.getAbsolutePath().indexOf('.')) + ".out");
 		}
 		else if(file.getName().contains(".java")) 
