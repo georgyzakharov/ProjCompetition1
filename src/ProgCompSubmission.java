@@ -15,7 +15,7 @@ public class ProgCompSubmission
 		
 		while(scanner.hasNext()) 
 		{
-			data.concat(scanner.nextLine()).concat("\n");
+			data = data + ((scanner.nextLine()).concat("\n"));
 		}
 	}
 	

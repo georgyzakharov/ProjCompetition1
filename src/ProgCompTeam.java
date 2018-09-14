@@ -19,14 +19,6 @@ public class ProgCompTeam implements Runnable
 	
 	public void run() 
 	{
-		try 
-		{
-			bob = new Robot();
-		}
-		catch (AWTException e)
-		{
-			e.printStackTrace();
-		}
 		
 		System.out.println("Created thread for team");
 		for( File file:Directory.listFiles())
@@ -51,6 +43,7 @@ public class ProgCompTeam implements Runnable
 		if(file.getName().contains(".c")) 
 		{
 			syscommand[0] = "clang";
+			syscommand[1].concat(" -o " + file.getName().substring(0, file.getName().indexOf('.')));
 		}
 		else if(file.getName().contains(".java")) 
 		{
@@ -101,31 +94,16 @@ public class ProgCompTeam implements Runnable
 			System.out.println(syscommand);
 			P = Runtime.getRuntime().exec(syscommand);
 			
-			while(P.isAlive()) 
-			{
-				int seconds=10;
-				
-				for(seconds=seconds*2 ; seconds > 0 ;seconds--)
-				{
-					bob.delay(500);
-					
-					if(!P.isAlive())
-					{
-						System.out.println("Program finished execution before timeout");
-						break;
-					}
-				}
-			}
+			while (P.isAlive()) {}
 			
 			Submissions.add(new ProgCompSubmission(file,P.getInputStream()));
 			
 			
-			if(P.isAlive()) {P.destroyForcibly();}
 		} 
 		catch (IOException e)
 		{
 			e.printStackTrace();
-		}
+		} 
 		
 	}
 	
@@ -148,6 +126,5 @@ public class ProgCompTeam implements Runnable
 	private File Directory;
 	private ArrayList<File> Files;
 	private ArrayList<ProgCompSubmission> Submissions;
-	private Robot bob;
 	//private String TeamName, Password;
 }
