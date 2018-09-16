@@ -51,8 +51,8 @@ public class ProgCompTeam implements Runnable
 		//Adds necessary syntax for the system command depending on the file extention
 		if(file.getName().contains(".c")) 
 		{
-			syscommand[0] = "clang";
-			syscommand[1].concat("-o "+file.getName().substring(0, file.getName().indexOf('.')));
+			syscommand[0] = "clang ";
+			syscommand[1] = syscommand[1] + (" -o "+file.getName().substring(0, file.getName().indexOf('.')));
 		}
 		else if(file.getName().contains(".java")) 
 		{
