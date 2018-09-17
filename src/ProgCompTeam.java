@@ -17,6 +17,8 @@ public class ProgCompTeam implements Runnable
 		this.Directory = Directory;
 		
 		Files = new ArrayList<File>();
+		
+		Submissions = new ArrayList<ProgCompSubmission>();
 	}
 	
 	//The method called at the start of a thread
