@@ -32,7 +32,7 @@ public class ProgCompTeam implements Runnable
 			System.out.println("Running thread for " + file.getName());
 			if(!(Files.contains(file)) && file.isFile()) 
 			{	
-				//compile(file);
+				compile(file);
 				exec(file);
 				//grade(file);
 				Files.add(file);
