@@ -32,7 +32,7 @@ public class ProgCompTeam implements Runnable
 		for( File file:Directory.listFiles())
 		{
 			System.out.println("Running thread for " + file.getName());
-			if(!(Files.contains(file)) && file.isFile()) 
+			if(!(Files.contains(file)) && file.isFile() && (file.getName().contains(".java") || file.getName().contains(".c") || file.getName().contains(".cpp") || file.getName().contains(".py"))) 
 			{	
 				compile(file);
 				exec(file);
