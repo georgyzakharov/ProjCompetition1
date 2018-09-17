@@ -88,8 +88,7 @@ public class ProgCompTeam implements Runnable
 		//Adds elements to the syste command depending on the file type
 		if(program.getName().contains(".c")) 
 		{
-			syscommand = syscommand + ".";
-			syscommand.concat(program.getAbsolutePath().substring(0, program.getAbsolutePath().indexOf('.')));
+			syscommand = program.getAbsolutePath().substring(0, program.getAbsolutePath().indexOf('.'));
 		}
 		else if(program.getName().contains(".java")) 
 		{
