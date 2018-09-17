@@ -49,9 +49,14 @@ public class ProgCompTeam implements Runnable
 		System.out.println("Compiling "+file.getName());
 		
 		//Adds necessary syntax for the system command depending on the file extention
-		if(file.getName().contains(".c")) 
+		if(file.getName().contains(".cpp")) 
 		{
-			syscommand[0] = "clang ";
+			syscommand[0] = "g++ ";
+			syscommand[1] = syscommand[1] + (" -o "+file.getAbsolutePath().substring(0, file.getAbsolutePath().indexOf('.')));
+		}
+		else if(file.getName().contains(".c")) 
+		{
+			syscommand[0] = "gcc ";
 			syscommand[1] = syscommand[1] + (" -o "+file.getAbsolutePath().substring(0, file.getAbsolutePath().indexOf('.')));
 		}
 		else if(file.getName().contains(".java")) 
