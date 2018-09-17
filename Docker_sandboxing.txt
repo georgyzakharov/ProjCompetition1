@@ -1,0 +1,4 @@
+sudo docker run -v ~/test:/test --rm openjdk /bin/bash -c "javac /test/Blurb.java && java -cp /test Blurb"
+sudo docker run -v ~/test:/test --rm gcc /bin/bash -c "gcc /test/angora.c && /test/angora"
+sudo docker run -v ~/test:/test --rm gcc /bin/bash -c "g++ /test/moscow.cpp && /test/moscow"
+sudo docker run -v ~/test:/test --rm python /bin/bash -c "python3 /test/trial.py"
