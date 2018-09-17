@@ -67,7 +67,7 @@ public class ProgCompTeam implements Runnable
 		try 
 		{
 			System.out.println(syscommand[0]+syscommand[1]);
-			Process P = Runtime.getRuntime().exec(syscommand);
+			Process P = Runtime.getRuntime().exec(syscommand[0] + syscommand[1]);
 			
 			while(P.isAlive()) {}
 		}
