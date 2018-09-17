@@ -33,8 +33,8 @@ public class ProgCompTeam implements Runnable
 			if(!(Files.contains(file)) && file.isFile()) 
 			{	
 				compile(file);
-				exec(file);
-				grade(file);
+				//exec(file);
+				//grade(file);
 				Files.add(file);
 			}
 		}
