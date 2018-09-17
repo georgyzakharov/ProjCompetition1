@@ -36,7 +36,7 @@ public class ProgCompTeam implements Runnable
 			{	
 				compile(file);
 				exec(file);
-				//grade(file);
+				grade(file);
 				Files.add(file);
 			}
 		}
@@ -103,7 +103,6 @@ public class ProgCompTeam implements Runnable
 		else if(program.getName().contains(".py")) 
 		{
 			syscommand = "python3 "+ program.getAbsolutePath();
-			System.out.println(syscommand);
 		}
 		/*
 		//Searches for a file containing inputs for the child program
