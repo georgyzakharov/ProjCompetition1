@@ -97,15 +97,13 @@ public class ProgCompTeam implements Runnable
 		}
 		else if(program.getName().contains(".java")) 
 		{
-			System.out.println(syscommand);
 			syscommand = syscommand + "java -cp "+Directory.getAbsolutePath() + " " + program.getName();
-			System.out.println(syscommand);
 			syscommand = syscommand.substring(0, syscommand.indexOf('.'));
-			System.out.println(syscommand);
 		}
 		else if(program.getName().contains(".py")) 
 		{
 			syscommand.concat("python3 ").concat(program.getAbsolutePath());
+			System.out.println(syscommand);
 		}
 		/*
 		//Searches for a file containing inputs for the child program
