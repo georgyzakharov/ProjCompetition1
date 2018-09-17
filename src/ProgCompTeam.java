@@ -102,7 +102,7 @@ public class ProgCompTeam implements Runnable
 		}
 		else if(program.getName().contains(".py")) 
 		{
-			syscommand.concat("python3 ").concat(program.getAbsolutePath());
+			syscommand = "python3 "+ program.getAbsolutePath();
 			System.out.println(syscommand);
 		}
 		/*
