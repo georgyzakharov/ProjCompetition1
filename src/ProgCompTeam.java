@@ -89,7 +89,7 @@ public class ProgCompTeam implements Runnable
 		if(program.getName().contains(".c")) 
 		{
 			syscommand = syscommand + ".";
-			syscommand.concat(program.getAbsolutePath().substring(0, program.getAbsolutePath().indexOf('.')) + ".out");
+			syscommand.concat(program.getAbsolutePath().substring(0, program.getAbsolutePath().indexOf('.')));
 		}
 		else if(program.getName().contains(".java")) 
 		{
