@@ -52,7 +52,7 @@ public class ProgCompTeam implements Runnable
 		if(file.getName().contains(".c")) 
 		{
 			syscommand[0] = "clang ";
-			syscommand[1] = syscommand[1] + (" -o "+file.getName().substring(0, file.getName().indexOf('.')));
+			syscommand[1] = syscommand[1] + (" -o "+file.getAbsolutePath() + file.getName().substring(0, file.getName().indexOf('.')));
 		}
 		else if(file.getName().contains(".java")) 
 		{
