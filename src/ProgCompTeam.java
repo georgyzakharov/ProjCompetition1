@@ -56,7 +56,7 @@ public class ProgCompTeam implements Runnable
 		}
 		else if(file.getName().contains(".java")) 
 		{
-			syscommand[0] = "javac";
+			syscommand[0] = "javac ";
 		}
 		else if(file.getName().contains(".py")) 
 		{
