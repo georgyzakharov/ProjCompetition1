@@ -32,8 +32,8 @@ public class ProgCompTeam implements Runnable
 			System.out.println("Running thread for " + file.getName());
 			if(!(Files.contains(file)) && file.isFile()) 
 			{	
-				compile(file);
-				//exec(file);
+				//compile(file);
+				exec(file);
 				//grade(file);
 				Files.add(file);
 			}
@@ -46,7 +46,6 @@ public class ProgCompTeam implements Runnable
 		//Creates an array of strings to be used as a system command
 		String[] syscommand = new String[2]; 
 		syscommand [1] = file.getAbsolutePath();
-		System.out.println("Compiling "+file.getName());
 		
 		//Adds necessary syntax for the system command depending on the file extention
 		if(file.getName().contains(".cpp")) 
@@ -71,7 +70,6 @@ public class ProgCompTeam implements Runnable
 		//Creates a new process that runs the system command
 		try 
 		{
-			System.out.println(syscommand[0]+syscommand[1]);
 			Process P = Runtime.getRuntime().exec(syscommand[0] + syscommand[1]);
 			
 			while(P.isAlive()) {}
